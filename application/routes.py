@@ -27,4 +27,8 @@ def user_records():
         )  # Create an instance of the User class
         db.session.add(new_user)  # Adds new User record to database
         db.session.commit()  # Commits all changes
-    return make_response(f"{new_user} successfully created!")
+    return render_template(
+        'users.jinja2',
+        users=User.query.all(),
+        title="Show Users"
+    )
